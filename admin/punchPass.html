@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content=" no-cache">
+  <meta http-equiv="expires" content="0">
+  <title>人員補卡</title>
+  <link rel="stylesheet" type="text/css" href="../css/fontawesome-free-6.1.2-web/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/controlHome.css">
+  <link rel="stylesheet" type="text/css" href="../css/signOff.css">
+</head>
+
+<body>
+  <header class="navbar sticky-top">
+    <div class=" container">
+      <a href="javascript:history.go(-1);"><img src="../assets/back.png" alt=""></a>
+      <div class="header-title">人員補卡</div>
+      <img class="icon-img" src="../assets/bell.png" alt="">
+    </div>
+  </header>
+  <button id="back-to-top" onclick="scrollToTop()"><i class="fa-solid fa-angle-up"></i></button>
+  <div class="navBox container">
+    <a href="adminHome.html"><i class="fa-sharp fa-regular fa-house"></i>
+      <div>首頁</div>
+    </a>
+    <a href="staff.html"><i class="fa-light fa-ballot-check"></i>
+      <div>員工管理</div>
+    </a>
+    <a href="setPunch.html"><i class="fa-light fa-location-dot"></i>
+      <div>打卡設定</div>
+    </a>
+    <a href="todayPunch.html"><i class="fa-regular fa-map-location-dot"></i>
+      <div>今日出勤</div>
+    </a>
+    <a href="addPunch.html"><i class="fa-light fa-location-check"></i>
+      <div>補打卡</div>
+    </a>
+  </div>
+  <div class="container">
+    <div class="header-box">
+      <div class="title-wrapper">
+        <div class="title">補卡人員</div>
+      </div>
+
+      <div class="link-wrapper">
+        <a class="link-item" href="addPunch.html">補卡申請</a>
+        <a class="link-item-active" href="punchPass.html">補卡成功</a>
+        <a class="link-item" href="punchFail.html">補卡駁回</a>
+      </div>
+    </div>
+
+    <div class="list-wrapper">
+      <div class="list-item row">
+        <a href="addPunchDetails.html" class="col-8"><i class="fa-light fa-memo-pad"></i>陳XX</a>
+        <div class="status-done">補卡成功</div>
+      </div>
+      <div class="list-item row">
+        <a href="addPunchDetails.html" class="col-8"><i class="fa-light fa-memo-pad"></i>李XX</a>
+        <div class="status-done">補卡成功</div>
+      </div>
+      <div class="list-item row">
+        <a href="addPunchDetails.html" class="col-8"><i class="fa-light fa-memo-pad"></i>許XX</a>
+        <div class="status-done">補卡成功</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-wrapper fixed-bottom">
+      <a href="adminHome.html"><i class="fa-sharp fa-regular fa-house"></i></a>
+      <a href="staff.html"><i class="fa-light fa-ballot-check"></i></a>
+      <a href="setPunch.html"><i class="fa-light fa-location-dot"></i></a>
+      <a href="todayPunch.html"><i class="fa-regular fa-map-location-dot"></i></a>
+      <a href="addPunch.html"><i class="fa-light fa-location-check"></i></a>
+    </div>
+  </footer>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+    integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+    <script>
+      // 刪除班表
+      const deleteBtns = document.querySelectorAll(".delete-btn");
+
+      deleteBtns.forEach((deleteBtn) => {
+        deleteBtn.addEventListener("click", () => {
+          // 找到被點擊的deleteBtn的父元素class="list-item"
+          const listItem = deleteBtn.parentElement.parentElement;
+          if (confirm("是否刪除此班表？") === true) {
+                // 給該listItem添加class="fade-out"
+                listItem.classList.add("fade-out");
+              // 在淡出效果結束後，從其父元素class="list-wrapper"中移除該listItem
+              setTimeout(() => {
+                listItem.parentElement.removeChild(listItem);
+              }, 500);
+            }
+          });
+        });
+        
+
+        // select 時間
+        window.onload = function populateHours() {
+          let select = $("select[name='time']");
+          for (let i = 0; i < 24; i++) {
+            for (let j = 0; j < 4; j++) {
+              let option = document.createElement("option");
+              option.value = i + ":" + j * 15;
+              if (i < 10) {
+                option.text = "0" + i + ":" + (j * 15).toString().padStart(2, "0");
+              } else {
+                option.text = i + ":" + (j * 15).toString().padStart(2, "0");
+              }
+              select.append(option);
+            }
+          }
+        }
+
+        // goTop
+        window.onscroll = function() {scrollFunction()};
+        
+        function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("back-to-top").style.display = "block";
+          } else {
+            document.getElementById("back-to-top").style.display = "none";
+          }
+        }
+        
+        function scrollToTop() {
+          var position = document.body.scrollTop || document.documentElement.scrollTop;
+          if (position > 0) {
+            window.scrollBy(0, -150);
+            setTimeout(scrollToTop, 20);
+          }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content=" no-cache">
+  <meta http-equiv="expires" content="0">
+  <title>簽核申請</title>
+  <link rel="stylesheet" type="text/css" href="css/fontawesome-free-6.1.2-web/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="css/controlHome.css">
+  <link rel="stylesheet" type="text/css" href="css/signOff.css">
+</head>
+
+<body>
+  <header class="navbar sticky-top">
+    <div class=" container">
+      <a href="javascript:history.go(-1);"><img src="./assets/back.png" alt=""></a>
+      <div class="header-title">簽核申請</div>
+      <img class="icon-img" src="./assets/bell.png" alt="">
+    </div>
+  </header>
+  <div class="header-box">
+    <div class="title-wrapper">
+      <div class="title">簽核清單</div>
+      <button class="add-btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-light fa-square-plus"></i></button>
+    </div>
+  </div>
+
+  <div class="list-wrapper">
+    <div class="list-item row">
+      <a href="detailed.html" class="col-8"><i class="fa-light fa-memo-pad"></i>1月加班補款申請</a>
+      <div class="status-undone">已駁回</div>
+      <div>
+        <button class="delete-btn col-4" type="button"><i class="fa-regular fa-trash"></i></button>
+      </div>
+    </div>
+    <div class="list-item row">
+      <a href="detailed.html" class="col-8"><i class="fa-light fa-memo-pad"></i>活動項目請款</a>
+      <div class="status-done">核准成功</div>
+      <div>
+        <button class="delete-btn col-4"><i class="fa-regular fa-trash"></i></button>
+      </div>
+    </div>
+    <div class="list-item row">
+      <a href="detailed.html" class="col-8"><i class="fa-light fa-memo-pad"></i>1/12有薪假申請</a>
+      <div class="status-undone">未核准</div>
+      <div>
+        <button class="delete-btn col-4"><i class="fa-regular fa-trash"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-wrapper fixed-bottom">
+      <a href="controlHome.html"><i class="fa-sharp fa-regular fa-house"></i></a>
+      <a href="punch.html"><i class="fa-light fa-ballot-check"></i></a>
+      <a href="schedule.html"><i class="fa-light fa-calendar-days"></i></a>
+      <a href="askForLeave.html"><i class="fa-light fa-note"></i></a>
+      <a href="salary.html"><i class="fa-light fa-money-check-dollar-pen"></i></a>
+      <a href="workOrder.html"><i class="fa-light fa-file-import"></i></a>
+    </div>
+  </footer>
+
+  <!-- 新增Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">簽核申請</h5>
+        </div>
+        <div class="modal-body">
+          <form class="form-box" action="">
+            <div class="punch-place">標題(必填)</div>
+            <input type="text" name="" id="">
+          </form>
+          <form class="form-box" action="">
+            <div class="punch-place">選擇項目</div>
+            <select name="" id="">
+              <option value="">費用請款</option>
+              <option value="">補打卡</option>
+              <option value="">職務代理</option>
+              <option value="">有薪請假</option>
+              <option value="">加班申請</option>
+            </select>
+          </form>
+          <form class="form-box" action="">
+            <div class="punch-place">日期</div>
+            <input type="date" name="" id="">
+          </form>
+          <form class="form-box" action="">
+            <div class="punch-place">申請事由</div>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+          </form>
+          <form class="form-box" action="">
+            <div class="punch-place">相關證明</div>
+            <input type="file" name="" id="">
+          </form>
+        </div>
+        <div class="modal-footer footer-btn-box">
+          <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">取消申請</button>
+          <button type="button" class="btn save-btn">送出申請</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+    integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+    <script>
+      // 刪除班表
+      const deleteBtns = document.querySelectorAll(".delete-btn");
+
+      deleteBtns.forEach((deleteBtn) => {
+        deleteBtn.addEventListener("click", () => {
+          // 找到被點擊的deleteBtn的父元素class="list-item"
+          const listItem = deleteBtn.parentElement.parentElement;
+          if (confirm("是否刪除此假單？") === true) {
+                // 給該listItem添加class="fade-out"
+                listItem.classList.add("fade-out");
+              // 在淡出效果結束後，從其父元素class="list-wrapper"中移除該listItem
+              setTimeout(() => {
+                listItem.parentElement.removeChild(listItem);
+              }, 500);
+            }
+          });
+        });
+        
+    </script>
+
+</body>
+
+</html>

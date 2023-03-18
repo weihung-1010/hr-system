@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content=" no-cache">
+  <meta http-equiv="expires" content="0">
+  <title>工作排班</title>
+  <link rel="stylesheet" type="text/css" href="../css/fontawesome-free-6.1.2-web/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/controlHome.css">
+  <link rel="stylesheet" type="text/css" href="../css/calendar.css">
+  <style>
+    
+    .content-box {
+      transition: opacity 0.5s ease;
+    }
+
+    .content-box.fade-out {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar sticky-top">
+    <div class=" container">
+      <a href="javascript:history.go(-1);"><img src="../assets/back.png" alt=""></a>
+      <div class="header-title">工作排班</div>
+      <img class="icon-img" src="../assets/bell.png" alt="">
+    </div>
+  </header>
+  <button id="back-to-top" onclick="scrollToTop()"><i class="fa-solid fa-angle-up"></i></button>
+  <div class="container">
+    <div class="calendar-box">
+      <input type="text" id="datepicker">
+    </div>
+
+    <div class="wrapper-box">
+      <div class="title-item">當日班表</div>
+      <div class="content-box">
+        <div class="content-items-box">
+          <div>XXX</div>
+          <div class="job-title">店經理</div>
+        </div>
+        <div>領導控場</div>
+        <div>08:00-17:00</div>
+        <div class="btn-wrapper">
+          <button class="edit-btn" type="button" data-bs-toggle="modal" data-bs-target="#editModal"><i
+              class="fa-light fa-pen"></i></button>
+          <button class="delete-btn"><i class="fa-regular fa-trash"></i></button>
+        </div>
+      </div>
+
+      <div class="content-box">
+        <div class="content-items-box">
+          <div>XXX</div>
+          <div class="job-title">小組長</div>
+        </div>
+        <div>吧檯管理</div>
+        <div>08:00-17:00</div>
+        <div class="btn-wrapper">
+          <button class="edit-btn" type="button" data-bs-toggle="modal" data-bs-target="#editModal"><i
+              class="fa-light fa-pen"></i></button>
+          <button class="delete-btn"><i class="fa-regular fa-trash"></i></button>
+        </div>
+      </div>
+
+      <div class="content-box">
+        <div class="content-items-box">
+          <div>XXX</div>
+          <div class="job-title">工讀生</div>
+        </div>
+        <div>外場服務</div>
+        <div>08:00-17:00</div>
+        <div class="btn-wrapper">
+          <button class="edit-btn" type="button" data-bs-toggle="modal" data-bs-target="#editModal"><i
+              class="fa-light fa-pen"></i></button>
+          <button class="delete-btn"><i class="fa-regular fa-trash"></i></button>
+        </div>
+      </div>
+
+
+      <div class="add-box">
+        <button class="add-unit" type="button"><i class="fa-light fa-square-plus"></i>匯出班表</button>
+        <a href="newSchedule.html"><button class="add-unit" type="button" data-bs-toggle="modal"
+            data-bs-target="#addModal"><i class="fa-light fa-square-plus"></i>新增排班</button></a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-wrapper fixed-bottom">
+      <a href="companyInfo.html"><i class="fa-sharp fa-regular fa-house"></i></a>
+      <a href="attendance.html"><i class="fa-light fa-ballot-check"></i></a>
+      <a href="adminSignOff.html"><i class="fa-light fa-pen-field"></i></a>
+      <a href="leaveApplication.html"><i class="fa-light fa-note"></i></a>
+      <a href="adminSalary.html"><i class="fa-light fa-money-check-dollar-pen"></i></a>
+      <a href="adminWorkOrder.html"><i class="fa-light fa-file-import"></i></a>
+    </div>
+  </footer>
+
+
+  <!-- 編輯Modal -->
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">編輯班表</h5>
+        </div>
+        <div class="modal-body add-modal">
+          <div class="items-box">
+            <div class="items">職位名稱</div>
+            <input type="text" name="" id="">
+          </div>
+          <div class="items-box">
+            <div class="items">職員名稱or編號</div>
+            <input type="text" name="" id="">
+          </div>
+          <div class="items-box">
+            <div class="items">崗位</div>
+            <input type="text">
+          </div>
+          <div class="select-box">
+            <div class="items">排班時段</div>
+            <select name="time" id="">
+              <option value=""></option>
+            </select>
+            <span class="to">至</span>
+            <select name="time" id="">
+              <option value=""></option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer footer-box">
+          <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">取消編輯</button>
+          <button type="button" class="btn save-btn">儲存編輯</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 新增排班Modal -->
+  <!-- <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">預排班表</h5>
+        </div>
+        <div class="modal-body add-modal">
+          <div class="items-box">
+            <div class="items">職位名稱</div>
+            <input type="text" name="" id="">
+          </div>
+          <div class="items-box">
+            <div class="items">職員名稱or編號</div>
+            <input type="text" name="" id="">
+          </div>
+          <div class="items-box">
+            <div class="items">崗位</div>
+            <input type="text">
+          </div>
+          <div class="select-box">
+            <div class="items">排班時段</div>
+            <select name="time" id="">
+              <option value=""></option>
+            </select>
+            <span class="to">至</span>
+            <select name="time" id="">
+              <option value=""></option>
+            </select>
+          </div>
+          <div class="items-box">
+            <div class="items">選擇日期</div>
+            <input type="text" id="dates">
+          </div>
+        </div>
+        <div class="modal-footer footer-box">
+          <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">取消排班</button>
+          <button type="button" class="btn save-btn">儲存排班</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/zh.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+    integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+  <script>
+    const deleteBtns = document.querySelectorAll('.delete-btn');
+
+    deleteBtns.forEach(deleteBtn => {
+      deleteBtn.addEventListener('click', () => {
+        if(confirm("是否刪除此單位？") === true){
+          const contentBox = deleteBtn.closest('.content-box');
+          contentBox.classList.add("fade-out");
+          setTimeout(() => {
+            contentBox.remove();
+          }, 500);
+        }
+      });
+    });
+
+    // 月曆
+    flatpickr("#datepicker", {
+      inline: true,
+      mode: "single",
+      dateFormat: "Y-m-d",
+      locale: "zh"
+    });
+
+    // select 時間
+    window.onload = function populateHours() {
+      let select = $("select[name='time']");
+      for (let i = 0; i < 24; i++) {
+        for (let j = 0; j < 4; j++) {
+          let option = document.createElement("option");
+          option.value = i + ":" + j * 15;
+          if (i < 10) {
+            option.text = "0" + i + ":" + (j * 15).toString().padStart(2, "0");
+          } else {
+            option.text = i + ":" + (j * 15).toString().padStart(2, "0");
+          }
+          select.append(option);
+        }
+      }
+    }
+
+    // goTop
+        window.onscroll = function() {scrollFunction()};
+        
+        function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("back-to-top").style.display = "block";
+          } else {
+            document.getElementById("back-to-top").style.display = "none";
+          }
+        }
+        
+        function scrollToTop() {
+          var position = document.body.scrollTop || document.documentElement.scrollTop;
+          if (position > 0) {
+            window.scrollBy(0, -150);
+            setTimeout(scrollToTop, 20);
+          }
+        }
+
+  </script>
+</body>
+
+</html>

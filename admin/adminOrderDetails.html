@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content=" no-cache">
+  <meta http-equiv="expires" content="0">
+  <title>工單資訊</title>
+  <link rel="stylesheet" type="text/css" href="../css/fontawesome-free-6.1.2-web/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/controlHome.css">
+  <link rel="stylesheet" type="text/css" href="../css/signOff.css">
+
+  <style>
+    .status-undone {
+      font-size: 1rem;
+      color: #ce1717;
+    }
+
+    .status-done {
+      font-size: 1rem;
+      color: #28c93e;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar sticky-top">
+    <div class=" container">
+      <a href="javascript:history.go(-1);"><img src="../assets/back.png" alt=""></a>
+      <div class="header-title"></div>
+    </div>
+  </header>
+  <div class="title-wrapper">
+    <div class="title">工單資訊</div>
+  </div>
+
+  <div class="content-wrapper">
+    <div class="content-title">工單名稱<span class="status-undone">未完成</span></div>
+    <div class="orderName" id="title">意想梯店工單</div>
+    <!-- <div>編號:987654321</div> -->
+    <div class="content-box">
+      <div class="content-box-title">客戶名稱</div>
+      <div class="content-box-items" id="client">XXX</div>
+      <div class="content-box-title">施工日期</div>
+      <div class="content-box-items" id="date">2023/02/01</div>
+      <div class="content-box-title">施工地址</div>
+      <div class="content-box-items" id="address">鳳山區文龍東路XXX號</div>
+      <div class="content-box-title">工作項目</div>
+      <div class="content-box-items" id="item">燈光管線配置與安裝</div>
+      <div class="content-box-title">負責人員</div>
+      <div class="content-box-items" id="name">許XX</div>
+      <div class="content-box-title">備註</div>
+      <div class="content-box-items" id="remark">無</div>
+    </div>
+    <div class="btn-box-wrapper">
+      <button class="editBtn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">編輯</button>
+      <button class="deleteBtn" type="button">刪除</button>
+    </div>
+  </div>
+
+  <!-- 新增Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">新增工單</h5>
+        </div>
+        <div class="modal-body">
+          <div class="add-box">
+            <div class="add-items">
+              <div>工單名稱</div>
+              <input type="text" name="" id="titleModal">
+            </div>
+          </div>
+          <div class="add-box">
+            <div class="add-items">
+              <div>客戶名稱</div>
+              <input type="text" name="" id="clientModal">
+            </div>
+          </div>
+          <div class="add-box">
+            <div class="add-items">
+              <div>施工日期</div>
+              <input type="date" name="" id="dateModal">
+            </div>
+          </div>
+          <div class="add-box">
+            <div class="add-items">
+              <div>施工地址</div>
+              <input type="text" name="" id="addressModal">
+            </div>
+          </div>
+          <div class="add-box">
+            <div class="add-items">
+              <div>工作項目</div>
+              <input type="text" name="" id="itemModal">
+            </div>
+          </div>
+          <div class="add-box">
+            <div class="add-items">
+              <div>負責人員</div>
+              <input name="" id="nameModal">
+            </div>
+          </div>
+          <div class="add-box">
+            <div class="add-items">
+              <div>備註</div>
+              <textarea name="" id="remarkModal" cols="30" rows="10"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer footer-btn-box">
+          <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">取消填寫</button>
+          <button type="button" class="btn save-btn">確認送出</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-wrapper fixed-bottom">
+      <a href="companyInfo.html"><i class="fa-sharp fa-regular fa-house"></i></a>
+      <a href="attendance.html"><i class="fa-light fa-ballot-check"></i></a>
+      <a href="adminSchedule.html"><i class="fa-light fa-calendar-days"></i></a>
+      <a href="adminSignOff.html"><i class="fa-light fa-pen-field"></i></a>
+      <a href="leaveApplication.html"><i class="fa-light fa-note"></i></a>
+      <a href="adminSalary.html"><i class="fa-light fa-money-check-dollar-pen"></i></a>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+    integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+    </script>
+  <script>
+    const fields = [
+      { id: '#title', modalId: '#titleModal' },
+      { id: '#client', modalId: '#clientModal' },
+      { id: '#date', modalId: '#dateModal' },
+      { id: '#address', modalId: '#addressModal' },
+      { id: '#item', modalId: '#itemModal' },
+      { id: '#name', modalId: '#nameModal' },
+      { id: '#remark', modalId: '#remarkModal' }
+    ];
+
+    const myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+
+    fields.forEach(field => {
+      const element = document.querySelector(field.id);
+      const modalElement = document.querySelector(field.modalId);
+      modalElement.value = element.textContent;
+    });
+
+    $('.save-btn').on('click', function () {
+      fields.forEach(field => {
+        const element = document.querySelector(field.id);
+        const modalElement = document.querySelector(field.modalId);
+        element.textContent = modalElement.value;
+      });
+      myModal.hide();
+    });
+  </script>
+</body>
+
+</html>

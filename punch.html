@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content=" no-cache">
+  <meta http-equiv="expires" content="0">
+  <title>員工打卡</title>
+  <link rel="stylesheet" type="text/css" href="css/fontawesome-free-6.1.2-web/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/controlHome.css">
+  <link rel="stylesheet" type="text/css" href="css/punch.css">
+</head>
+
+<body>
+  <header class="navbar sticky-top">
+    <div class=" container">
+      <a href="javascript:history.go(-1);"><img src="./assets/back.png" alt=""></a>
+      <!-- <img src="./assets/logo-34 1.png" alt=""> -->
+      <div class="header-title">員工打卡</div>
+      <img class="icon-img" src="./assets/bell.png" alt="">
+    </div>
+  </header>
+  <div class="wrapper-box">
+    <div class="date" id="date"></div>
+    <div class="week" id="week"></div>
+    <div class="time" id="currentTime"></div>
+    <div class="punch-box">
+      <div class="punch-place">打卡點</div>
+      <select name="" id="">
+        <option value="">高雄鳳山總部</option>
+      </select>
+    </div>
+    <form class="form-box" action="">
+      <div class="punch-place">項目</div>
+      <select name="" id="">
+        <option value="">上班</option>
+        <option value="">下班</option>
+      </select>
+    </form>
+    <a href="punchRecord.html"><div class="punchRecord-box">
+     <button class="punchRecord">打卡紀錄</button>
+    </div></a>
+    <div class="btn-box">
+      <button class="submit" type="button">
+        打卡
+      </button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-wrapper fixed-bottom">
+      <a href="controlHome.html"><i class="fa-sharp fa-regular fa-house"></i></a>
+      <a href="schedule.html"><i class="fa-light fa-calendar-days"></i></a>
+      <a href="signOff.html"><i class="fa-light fa-pen-field"></i></a>
+      <a href="askForLeave.html"><i class="fa-light fa-note"></i></a>
+      <a href="salary.html"><i class="fa-light fa-money-check-dollar-pen"></i></a>
+      <a href="workOrder.html"><i class="fa-light fa-file-import"></i></a>
+    </div>
+  </footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+    integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+  <script>
+    // 取得今日
+    function updateDate() {
+      let currentDate = new Date();
+      let year = currentDate.getFullYear();
+      let month = currentDate.getMonth() + 1;
+      let date = currentDate.getDate();
+      let weekdays = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+      let weekday = weekdays[currentDate.getDay()];
+      document.getElementById('date').innerText = year + '/' + month + '/' + date
+      document.getElementById('week').innerText = weekday
+    }
+    window.updateDate();
+
+    // 目前時間
+    function updateTime() {
+      let currentTime = new Date();
+      let hours = currentTime.getHours().toString().padStart(2, "0");
+      let minutes = currentTime.getMinutes().toString().padStart(2, "0");
+      let seconds = currentTime.getSeconds().toString().padStart(2, "0");
+      document.getElementById("currentTime").innerText = hours + ":" + minutes + ":" + seconds;
+    }
+
+
+    // 每秒更新
+    let readTimerID;
+    $(window).on('load',
+      function (eventObject) {
+        updateTime();
+        readTimerID = setInterval(updateTime, 1000);
+      }
+    );
+
+
+  </script>
+</body>
+
+</html>

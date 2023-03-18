@@ -1,0 +1,107 @@
+.time {
+  color: #000;
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.date {
+  margin-top: 30px;
+  color: #000;
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.week {
+  color: #000;
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.punch-box {
+  margin: 20px;
+  padding: 20px;
+  background-color: #EEEEEE;
+  border-radius: 15px;
+}
+
+.punch-box select {
+  font-size: 1.6rem;
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: #EEEEEE;
+}
+
+.punch-place {
+  color: #746E6E;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+
+.form-box {
+  margin: 20px;
+  padding: 20px;
+  background-color: #EEEEEE;
+  border-radius: 15px;
+}
+
+.form-box select {
+  font-size: 1.6rem;
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: #EEEEEE;
+}
+
+.btn-box{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.submit{
+  border: none;
+  background-color: #294487;
+  color: #FFF;
+  font-size: 2rem;
+  border-radius: 50px;
+  padding: 5px 50px;
+  cursor: pointer;
+}
+
+.submit:hover{
+  transform: scale(1.05);
+}
+
+.submit:active{
+  transform: scale(1);
+  box-shadow: inset 0px 0px 10px 1px rgba(0, 0, 0, .2);
+}
+
+.punchRecord-box{
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.punchRecord{
+  border: 2px solid #294487;
+  color: #294487;
+  background-color: #F5F5F5;
+  padding: 6px 21px ;
+  margin-right: 5%;
+  border-radius: 35px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.punchRecord:hover{
+  transform: scale(1.05);
+}
+
+.punchRecord:active{
+  transform: scale(1);
+}

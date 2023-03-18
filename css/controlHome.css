@@ -1,0 +1,213 @@
+html,body{
+  margin: 0px auto;
+  /* max-width: 450px; */
+  /* height: 100vh; */
+	padding: 0px;
+	font-family: "微軟正黑體";
+  background-color: #f5f5f5;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: none;
+}
+button:focus{
+  outline: none;
+}
+button{
+  cursor: pointer;
+}
+
+.content-box{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbar{
+  height: 80px;
+  background-color: #f5f5f5;
+}
+
+.header-title{
+  color: #000;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.icon-img{
+  background-color: #000;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.head{
+  color: #ACACAC;
+  font-weight: 500;
+  font-size: 24px;
+  margin: 15px 0px;
+  text-align: center;
+}
+
+
+.title{
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.icon-wrapper{
+  margin: 5px 10px 15px 14px;
+}
+
+
+.link-wrapper{
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0px;
+}
+
+.link-box{
+  color: #294487;
+  font-weight: 500;
+  padding: 20px;
+  font-size: 1.2rem;
+  background-color: #fff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  width: 45%;
+}
+
+.link-box:hover,
+.link-title-box:hover{
+  color: #294487;
+  transform: scale(1.05);
+}
+
+.link-box:active,
+.link-title-box:active{
+  transform: scale(1);
+  box-shadow: inset 0px 0px 10px 1px rgba(0, 0, 0, .2);
+}
+
+.link-box i{
+  font-size: 2.5rem;
+}
+
+.link-items{
+  margin-top: 26px;
+  font-weight: 700;
+}
+
+.footer-wrapper{
+  display: flex;
+  justify-content: space-around;
+  background-color: #000;
+  padding: 10px 14px;
+  border-radius: 25px 25px 0px 0px;
+  /* max-width: 450px; */
+  margin: 0px auto;
+}
+.navBox{
+  display: none;
+}
+
+.footer-wrapper a,
+.navBox a{
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.footer-wrapper a:hover,
+.navBox a:hover{
+  transform: scale(1.2);
+}
+
+.footer-wrapper a:active,
+.navBox a:active{
+  transform: scale(1);
+}
+
+.footer-btn-box{
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.list-wrapper{
+  height: 100vh;
+}
+
+.wrapper-box{
+  height: 100vh;
+}
+
+/* adminHome */
+
+.link-title-box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #294487;
+  font-weight: 500;
+  padding: 20px;
+  font-size: 1.2rem;
+  background-color: #fff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  width: 95%;
+  height: 90px;
+  margin-top: 10px;
+}
+
+.title-link{
+  font-weight: 700;
+}
+.link-title-box i{
+  font-size: 1.5rem;
+}
+#back-to-top{
+  display: none;
+}
+
+/* 桌機樣式 */
+@media screen and (min-width:767px) { 
+  .navBox{
+    display: flex;
+    justify-content: space-around;
+    background-color: #FFF;
+    padding: 10px 14px;
+    border-radius:0 0 15px 15px;
+    margin: 0px auto 20px auto;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .navBox a{
+    color: #294487;
+    text-align: center;
+  }
+  .footer-wrapper{
+    display: none;
+  }
+ 
+  #back-to-top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #333;
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition-duration: 0.5s;
+    border: none;
+  }
+  #back-to-top:hover {
+    background-color: #555;
+  }
+  
+}

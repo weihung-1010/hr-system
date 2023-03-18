@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content=" no-cache">
+  <meta http-equiv="expires" content="0">
+  <title>員工出勤</title>
+  <link rel="stylesheet" type="text/css" href="../css/fontawesome-free-6.1.2-web/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/controlHome.css">
+  <link rel="stylesheet" type="text/css" href="../css/schedule.css">
+  <style>
+    .record-wrapper{
+      margin: 0px 20px 20px 20px ;
+      /* padding: 20px 0px; */
+      height: 100vh;
+    }
+    .detail-title-box{
+      display: flex;
+      justify-content: space-around;
+      background-color: #294487;
+      color: #FFF;
+      padding:5px 20px;
+    }
+
+    .detail-title-box div{
+      width: 80px;
+      text-align: center;
+    }
+
+    .detail-box{
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .detail-box div{
+      width: 80px;
+      text-align: center;
+    }
+
+    .status-red{
+      color: #f30000;
+    }
+
+    .status-green{
+      color: #1dbd2b;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar sticky-top">
+    <div class=" container">
+      <a href="javascript:history.go(-1);"><img src="../assets/back.png" alt=""></a>
+      <div class="header-title">員工出勤</div>
+      <img class="icon-img" src="../assets/bell.png" alt="">
+    </div>
+  </header>
+  <button id="back-to-top" onclick="scrollToTop()"><i class="fa-solid fa-angle-up"></i></button>
+  <div class="navBox container">
+    <a href="companyInfo.html"><i class="fa-sharp fa-regular fa-house"></i>
+      <div>
+        首頁
+      </div>
+    </a>
+      <a href="adminSchedule.html"><i class="fa-light fa-calendar-days"></i>
+        <div>
+          工作排班
+        </div>
+      </a>
+      <a href="adminSignOff.html"><i class="fa-light fa-pen-field"></i>
+        <div>
+          簽核申請
+        </div>
+      </a>
+      <a href="leaveApplication.html"><i class="fa-light fa-note"></i>
+        <div>
+          公司請假
+        </div>
+      </a>
+      <a href="adminSalary.html"><i class="fa-light fa-money-check-dollar-pen"></i>
+        <div>
+          薪資結算
+        </div>
+      </a>
+      <a href="adminWorkOrder.html"><i class="fa-light fa-file-import"></i>
+        <div>
+          工單派遣
+        </div>
+      </a>
+  </div>
+  <div class="container">
+    <div class="title-wrapper">
+      <div class="title">出勤清單</div>
+    </div>
+    <form class="form-box" action="">
+      <div class="punch-place">選擇人員</div>
+      <select name="" id="" class="month-input">
+        <option value="">無</option>
+        <option value="">陳XX</option>
+        <option value="">謝XX</option>
+        <option value="">王XX</option>
+        <option value="">李XX</option>
+      </select>
+      <div class="punch-place">選擇月份</div>
+      <input class="month-input" type="month">
+      <div class="punch-place">選擇日期</div>
+      <input class="month-input" type="date">
+      <button class="choose-all">搜尋</button>
+    </form>
+
+    <div class="detail-title-box">
+      <div>姓名</div>
+      <div>時間</div>
+      <div>上班</div>
+      <div>時間</div>
+      <div>下班</div>
+    </div>
+
+    <div class="record-wrapper">
+      <div class="detail-box">
+        <div>李XX</div>
+        <div>07:22:23</div>
+        <div class="status-green">準時</div>
+        <div>--</div>
+        <div class="status-red">未打卡</div>
+      </div>
+      <div class="detail-box">
+        <div>陳XX</div>
+        <div>07:32:23</div>
+        <div class="status-red">遲到</div>
+        <div>17:02:55</div>
+        <div class="status-green">準時</div>
+      </div>
+      <div class="detail-box">
+        <div>黃XX</div>
+        <div>07:22:33</div>
+        <div class="status-green">準時</div>
+        <div>17:02:22</div>
+        <div class="status-green">準時</div>
+      </div>
+
+      <div class="detail-box">
+        <div>林XX</div>
+        <div>07:22:34</div>
+        <div class="status-green">準時</div>
+        <div>16:52:54</div>
+        <div class="status-red">早退</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-wrapper fixed-bottom">
+      <a href="companyInfo.html"><i class="fa-sharp fa-regular fa-house"></i></a>
+      <a href="adminSchedule.html"><i class="fa-light fa-calendar-days"></i></a>
+      <a href="adminSignOff.html"><i class="fa-light fa-pen-field"></i></a>
+      <a href="leaveApplication.html"><i class="fa-light fa-note"></i></a>
+      <a href="adminSalary.html"><i class="fa-light fa-money-check-dollar-pen"></i></a>
+      <a href="adminWorkOrder.html"><i class="fa-light fa-file-import"></i></a>
+    </div>
+  </footer>
+
+  <!-- 新增Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">新增班表</h5>
+        </div>
+        <div class="modal-body">
+          <form class="form-box" action="">
+            <div class="punch-place">標題(必填)</div>
+            <input type="text" name="" id="">
+          </form>
+          <form class="form-box" action="">
+            <div class="punch-place">年、月份</div>
+            <input type="month">
+          </form>
+        </div>
+        <div class="modal-footer footer-btn-box">
+          <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">取消新增</button>
+          <button type="button" class="btn save-btn">確認新增</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 編輯Modal -->
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">編輯班表</h5>
+        </div>
+        <div class="modal-body">
+          <form class="form-box" action="">
+            <div class="punch-place">標題(必填)</div>
+            <input type="text" name="" id="">
+          </form>
+          <form class="form-box" action="">
+            <div class="punch-place">月份</div>
+            <input type="month">
+          </form>
+        </div>
+        <div class="modal-footer footer-btn-box">
+          <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">取消編輯</button>
+          <button type="button" class="btn save-btn">儲存編輯</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+    integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+  <script>
+    // 刪除班表
+    const deleteBtns = document.querySelectorAll(".delete-btn");
+    deleteBtns.forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        if (confirm("是否刪除此班表？") === true) {
+          e.target.parentElement.parentElement.parentElement.remove();
+        }
+      });
+    });
+
+    // goTop
+        window.onscroll = function() {scrollFunction()};
+        
+        function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("back-to-top").style.display = "block";
+          } else {
+            document.getElementById("back-to-top").style.display = "none";
+          }
+        }
+        
+        function scrollToTop() {
+          var position = document.body.scrollTop || document.documentElement.scrollTop;
+          if (position > 0) {
+            window.scrollBy(0, -150);
+            setTimeout(scrollToTop, 20);
+          }
+        }
+
+  </script>
+
+</body>
+
+</html>

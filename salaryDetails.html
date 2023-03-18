@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content=" no-cache">
+  <meta http-equiv="expires" content="0">
+  <title>薪資結算</title>
+  <link rel="stylesheet" type="text/css" href="css/fontawesome-free-6.1.2-web/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="css/controlHome.css">
+  <link rel="stylesheet" type="text/css" href="css/salary.css">
+
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+
+<body>
+  <header class="navbar sticky-top">
+    <div class=" container">
+      <a href="javascript:history.go(-1);"><img src="./assets/back.png" alt=""></a>
+      <div class="header-title">薪資結算</div>
+      <img class="icon-img" src="./assets/bell.png" alt="">
+    </div>
+  </header>
+
+
+  <div class="title-wrapper">
+    <div class="title">薪資明細</div>
+    <button class="add-btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+      style="display: none;"><i class="fa-light fa-square-plus"></i></button>
+  </div>
+
+  <div class="wrapper-box">
+
+    <div class="content-wrapper">
+      <div class="content-title">2023.01月份</div>
+      <div class="detail-box">
+        <div class="items">工作總時數</div>
+        <div class="items">248hr</div>
+      </div>
+      <div class="detail-box">
+        <div class="items">總薪資</div>
+        <div class="items">42,000$</div>
+      </div>
+      <div class="detail-box">
+        <div class="items">餐費補助</div>
+        <div class="items">2,000$</div>
+      </div>
+      <div class="detail-box">
+        <div class="items">勞保</div>
+        <div class="items">860$</div>
+      </div>
+      <div class="detail-box">
+        <div class="items">健保</div>
+        <div class="items">860$</div>
+      </div>
+      <div class="total-box">
+        <div class="items-detail">實際薪資</div>
+        <div class="items-detail">42,280$</div>
+      </div>
+    </div>
+
+    <div class="confirm-wrapper">
+      <div>簽名確認</div>
+    </div>
+    <div class="sign-box">
+      <canvas id="signatureCanvas" width="360" height="200" crossOrigin="anonymous"></canvas>
+      <div class="btn-wrapper">
+        <button class="reset-btn" onclick="clearCanvas()">重新簽名</button>
+        <button class="confirm-btn">確認簽名</button>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-wrapper fixed-bottom">
+      <a href="controlHome.html"><i class="fa-sharp fa-regular fa-house"></i></a>
+      <a href="punch.html"><i class="fa-light fa-ballot-check"></i></a>
+      <a href="schedule.html"><i class="fa-light fa-calendar-days"></i></a>
+      <a href="signOff.html"><i class="fa-light fa-pen-field"></i></a>
+      <a href="askForLeave.html"><i class="fa-light fa-note"></i></a>
+      <a href="workOrder.html"><i class="fa-light fa-file-import"></i></a>
+    </div>
+  </footer>
+
+  <!-- 新增Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">請假申請</h5>
+        </div>
+        <div class="modal-body">
+          <form class="form-box" action="">
+            <div class="punch-place">請假項目</div>
+            <select name="" id="">
+              <option value="">事假</option>
+              <option value="">公假</option>
+              <option value="">病假</option>
+              <option value="">喪假</option>
+              <option value="">婚假</option>
+              <option value="">產假</option>
+              <option value="">陪產假</option>
+              <option value="">育嬰假</option>
+              <option value="">特休假</option>
+              <option value="">生理假</option>
+            </select>
+          </form>
+          <form class="form-box" action="">
+            <div class="punch-place">請假日期</div>
+            <div class="input-style">
+              <input type="date" name="" id="">
+              <span class="to">至</span>
+              <input type="date" name="" id="">
+            </div>
+          </form>
+          <form class="form-box" action="">
+            <div class="punch-place">請假時段</div>
+            <div class="input-style">
+              <select name="time" id=""></select>
+              <span class="to">至</span>
+              <select name="time" id=""></select>
+            </div>
+          </form>
+          <form class="form-box" action="">
+            <div class="punch-place">請假事由</div>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+          </form>
+          <form class="form-box" action="">
+            <div class="punch-place">相關證明</div>
+            <input type="file" name="" id="">
+          </form>
+        </div>
+        <div class="modal-footer footer-btn-box">
+          <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">取消申請</button>
+          <button type="button" class="btn save-btn">送出申請</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+    integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+  <script>
+    // 刪除班表
+    const deleteBtns = document.querySelectorAll(".delete-btn");
+
+    deleteBtns.forEach((deleteBtn) => {
+      deleteBtn.addEventListener("click", () => {
+        // 找到被點擊的deleteBtn的父元素class="list-item"
+        const listItem = deleteBtn.parentElement.parentElement;
+        if (confirm("是否刪除此班表？") === true) {
+          // 給該listItem添加class="fade-out"
+          listItem.classList.add("fade-out");
+          // 在淡出效果結束後，從其父元素class="list-wrapper"中移除該listItem
+          setTimeout(() => {
+            listItem.parentElement.removeChild(listItem);
+          }, 500);
+        }
+      });
+    });
+
+
+    // select 時間
+    window.onload = function populateHours() {
+      let select = $("select[name='time']");
+      for (let i = 0; i < 24; i++) {
+        for (let j = 0; j < 4; j++) {
+          let option = document.createElement("option");
+          option.value = i + ":" + j * 15;
+          if (i < 10) {
+            option.text = "0" + i + ":" + (j * 15).toString().padStart(2, "0");
+          } else {
+            option.text = i + ":" + (j * 15).toString().padStart(2, "0");
+          }
+          select.append(option);
+        }
+      }
+    }
+
+    let canvas = document.getElementById("signatureCanvas");
+    let context = canvas.getContext("2d");
+
+    let isDrawing = false;
+    let lastX, lastY;
+
+    canvas.addEventListener("touchstart", function (event) {
+      isDrawing = true;
+      lastX = event.touches[0].clientX - canvas.offsetLeft;
+      lastY = event.touches[0].clientY - canvas.offsetTop;
+    });
+
+    canvas.addEventListener("touchmove", function (event) {
+      event.preventDefault(); // 防止页面滚动
+      if (isDrawing) {
+        let currentX = event.touches[0].clientX - canvas.offsetLeft;
+        let currentY = event.touches[0].clientY - canvas.offsetTop;
+
+        context.beginPath();
+        context.moveTo(lastX, lastY);
+        context.lineTo(currentX, currentY);
+        context.stroke();
+
+        lastX = currentX;
+        lastY = currentY;
+      }
+    });
+
+    canvas.addEventListener("touchend", function () {
+      isDrawing = false;
+    });
+
+    function clearCanvas() {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+
+    // 定義將 canvas 轉換為圖片的函式
+    function convertCanvasToImage(canvas) {
+      var image = new Image();
+      image.src = canvas.toDataURL("image/png");
+      return image;
+    }
+
+    // 當「確認簽名」按鈕被按下時，將 canvas 轉換為圖片
+    document.querySelector(".confirm-btn").addEventListener("click", function () {
+      html2canvas(document.querySelector("#signatureCanvas")).then(function (canvas) {
+        var image = convertCanvasToImage(canvas);
+
+        // 建立一個下載連結
+        var downloadLink = document.createElement("a");
+        downloadLink.href = image.src;
+        downloadLink.download = "signature.png";
+        document.body.appendChild(downloadLink);
+
+        // 點擊下載連結
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+      });
+    });
+
+    // 定義清除 canvas 的函式
+    function clearCanvas() {
+      var canvas = document.getElementById("signatureCanvas");
+      var context = canvas.getContext("2d");
+      context.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  </script>
+
+</body>
+
+</html>

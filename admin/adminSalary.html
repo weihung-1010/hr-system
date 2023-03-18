@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content=" no-cache">
+  <meta http-equiv="expires" content="0">
+  <title>薪資結算</title>
+  <link rel="stylesheet" type="text/css" href="../css/fontawesome-free-6.1.2-web/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/controlHome.css">
+  <link rel="stylesheet" type="text/css" href="../css/signOff.css">
+  
+</head>
+
+<body>
+  <header class="navbar sticky-top">
+    <div class=" container">
+      <a href="javascript:history.go(-1);"><img src="../assets/back.png" alt=""></a>
+      <div class="header-title">薪資結算</div>
+      <img class="icon-img" src="../assets/bell.png" alt="">
+    </div>
+  </header>
+  <button id="back-to-top" onclick="scrollToTop()"><i class="fa-solid fa-angle-up"></i></button>
+  <div  class="navBox container">
+    <a href="companyInfo.html"><i class="fa-sharp fa-regular fa-house"></i>
+      <div>
+        首頁
+      </div>
+    </a>
+    <a href="attendance.html"><i class="fa-light fa-ballot-check"></i>
+      <div>
+        員工出勤
+      </div>
+    </a>
+    <a href="adminCalender.html"><i class="fa-light fa-calendar-days"></i>
+      <div>
+        工作排班
+      </div>
+    </a>
+    <a href="adminSignOff.html"><i class="fa-light fa-pen-field"></i>
+      <div>
+        簽核申請
+      </div>
+    </a>
+    <a href="leaveApplication.html"><i class="fa-light fa-note"></i>
+      <div>
+        公司請假
+      </div>
+    </a>
+    <a href="adminWorkOrder.html"><i class="fa-light fa-file-import"></i>
+      <div>
+      工單派遣
+      </div>
+    </a>
+  </div>
+  <div class="container">
+    <div class="header-box">
+      <div class="title-wrapper">
+        <div class="title">薪資結算</div>
+      </div>
+
+      <div class="link-wrapper">
+        <a class="link-item-active" href="adminSalary.html">全部</a>
+        <a class="link-item" href="salaryUndone.html">尚未結算</a>
+        <a class="link-item" href="salaryDone.html">已結算</a>
+      </div>
+      <div class="search-box">
+        <input type="month">
+        <button>查詢</button>
+      </div>
+    </div>
+
+    <div class="list-wrapper">
+      <div class="list-item row">
+        <a href="adminSalaryDetails.html" class="col-8"><i class="fa-light fa-memo-pad"></i>李XX</a>
+        <div class="status-undone">尚未結算</div>
+      </div>
+      <div class="list-item row">
+        <a href="adminSalaryDetails.html" class="col-8"><i class="fa-light fa-memo-pad"></i>陳XX</a>
+        <div class="status-undone">尚未結算</div>
+      </div>
+      <div class="list-item row">
+        <a href="adminSalaryDetails.html" class="col-8"><i class="fa-light fa-memo-pad"></i>謝XX</a>
+        <div class="status-done">已結算</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-wrapper fixed-bottom">
+      <a href="companyInfo.html"><i class="fa-sharp fa-regular fa-house"></i></a>
+      <a href="attendance.html"><i class="fa-light fa-ballot-check"></i></a>
+      <a href="adminCalender.html"><i class="fa-light fa-calendar-days"></i></a>
+      <a href="adminSignOff.html"><i class="fa-light fa-pen-field"></i></a>
+      <a href="leaveApplication.html"><i class="fa-light fa-note"></i></a>
+      <a href="adminWorkOrder.html"><i class="fa-light fa-file-import"></i></a>
+    </div>
+  </footer>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+    integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+    <script>
+      // 刪除班表
+      const deleteBtns = document.querySelectorAll(".delete-btn");
+
+      deleteBtns.forEach((deleteBtn) => {
+        deleteBtn.addEventListener("click", () => {
+          // 找到被點擊的deleteBtn的父元素class="list-item"
+          const listItem = deleteBtn.parentElement.parentElement;
+          if (confirm("是否刪除此表單？") === true) {
+                // 給該listItem添加class="fade-out"
+                listItem.classList.add("fade-out");
+              // 在淡出效果結束後，從其父元素class="list-wrapper"中移除該listItem
+              setTimeout(() => {
+                listItem.parentElement.removeChild(listItem);
+              }, 500);
+            }
+          });
+        });
+        
+
+        // select 時間
+        window.onload = function populateHours() {
+          let select = $("select[name='time']");
+          for (let i = 0; i < 24; i++) {
+            for (let j = 0; j < 4; j++) {
+              let option = document.createElement("option");
+              option.value = i + ":" + j * 15;
+              if (i < 10) {
+                option.text = "0" + i + ":" + (j * 15).toString().padStart(2, "0");
+              } else {
+                option.text = i + ":" + (j * 15).toString().padStart(2, "0");
+              }
+              select.append(option);
+            }
+          }
+        }
+         // goTop
+        window.onscroll = function() {scrollFunction()};
+        
+        function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("back-to-top").style.display = "block";
+          } else {
+            document.getElementById("back-to-top").style.display = "none";
+          }
+        }
+        
+        function scrollToTop() {
+          var position = document.body.scrollTop || document.documentElement.scrollTop;
+          if (position > 0) {
+            window.scrollBy(0, -150);
+            setTimeout(scrollToTop, 20);
+          }
+        }
+    </script>
+
+</body>
+
+</html>

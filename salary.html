@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content=" no-cache">
+  <meta http-equiv="expires" content="0">
+  <title>薪資結算</title>
+  <link rel="stylesheet" type="text/css" href="css/fontawesome-free-6.1.2-web/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="css/controlHome.css">
+  <link rel="stylesheet" type="text/css" href="css/schedule.css">
+</head>
+
+<body>
+  <header class="navbar sticky-top">
+    <div class=" container">
+      <a href="javascript:history.go(-1);"><img src="./assets/back.png" alt=""></a>
+      <div class="header-title">薪資結算</div>
+      <img class="icon-img" src="./assets/bell.png" alt="">
+    </div>
+  </header>
+  <div class="title-wrapper">
+    <div class="title">薪資清單</div>
+  </div>
+  <form class="form-box" action="">
+    <div class="punch-place">年、月份</div>
+    <input class="month-input" type="month">
+    <div class="btnBox">
+      <button type="button" class="choose-all">選取全部</button>
+      <button type="button" class="choose-all">搜尋</button>
+    </div>
+  </form>
+
+  <div class="list-wrapper">
+    <div class="list-item">
+      <a href="salaryDetails.html"><i class="fa-light fa-memo-pad"></i>1月份薪資</a>
+    </div>
+    <div class="list-item">
+      <a href="salaryDetails.html"><i class="fa-light fa-memo-pad"></i>2月份薪資</a>
+    </div>
+    <div class="list-item">
+      <a href="salaryDetails.html"><i class="fa-light fa-memo-pad"></i>3月份薪資</a>
+    </div>
+    <div class="list-item">
+      <a href="salaryDetails.html"><i class="fa-light fa-memo-pad"></i>4月份薪資</a>
+    </div>
+  </div>
+
+
+  <footer>
+    <div class="footer-wrapper fixed-bottom">
+      <a href="controlHome.html"><i class="fa-sharp fa-regular fa-house"></i></a>
+      <a href="punch.html"><i class="fa-light fa-ballot-check"></i></a>
+      <a href="schedule.html"><i class="fa-light fa-calendar-days"></i></a>
+      <a href="signOff.html"><i class="fa-light fa-pen-field"></i></a>
+      <a href="askForLeave.html"><i class="fa-light fa-note"></i></a>
+      <a href="workOrder.html"><i class="fa-light fa-file-import"></i></a>
+    </div>
+  </footer>
+
+  <!-- 新增Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">新增班表</h5>
+        </div>
+        <div class="modal-body">
+          <form class="form-box" action="">
+            <div class="punch-place">標題(必填)</div>
+            <input type="text" name="" id="">
+          </form>
+          <form class="form-box" action="">
+            <div class="punch-place">年、月份</div>
+            <input type="month">
+          </form>
+        </div>
+        <div class="modal-footer footer-btn-box">
+          <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">取消新增</button>
+          <button type="button" class="btn save-btn">確認新增</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 編輯Modal -->
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">編輯班表</h5>
+        </div>
+        <div class="modal-body">
+          <form class="form-box" action="">
+            <div class="punch-place">標題(必填)</div>
+            <input type="text" name="" id="">
+          </form>
+          <form class="form-box" action="">
+            <div class="punch-place">月份</div>
+            <input type="month">
+          </form>
+        </div>
+        <div class="modal-footer footer-btn-box">
+          <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">取消編輯</button>
+          <button type="button" class="btn save-btn">儲存編輯</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+    integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+  <script>
+    // 刪除班表
+    const deleteBtns = document.querySelectorAll(".delete-btn");
+    deleteBtns.forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        if (confirm("是否刪除此班表？") === true) {
+          e.target.parentElement.parentElement.parentElement.remove();
+        }
+      });
+    });
+
+  </script>
+
+</body>
+
+</html>
